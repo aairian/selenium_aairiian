@@ -9,7 +9,7 @@ import org.testng.annotations.Test;
 public class PrimeTest {
 
     @Test
-    public void isPrimeNumberTest (){
+    public void isPrimeNumberTesst (){
 
         Assert.assertTrue(isPrime(8));
     }
