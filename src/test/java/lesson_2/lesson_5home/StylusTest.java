@@ -24,7 +24,7 @@ public class StylusTest {
 
     @BeforeTest
     public void setUp() {
-        searchText = "Sony Z2";
+        searchText = "Sony Xperia Z2 Black";
         driver = new FirefoxDriver();
         driver.get("http://stylus.com.ua/");
         driver.manage().window().maximize();
@@ -35,8 +35,8 @@ public class StylusTest {
     public void stylusSearchTest() {
         searchField = driver.findElement(By.name("q"));
         searchField.sendKeys(searchText);
-        searchButton.findElement(By.cssSelector("input[type='submit'][value='Найти']")).click();
-        searchLink = driver.findElement(By.xpath(".//*[@id='search-list']/ul/li[2]/a/span"));
+        driver.findElement(By.cssSelector("input[type='submit'][value='Найти']")).click();
+        searchLink = driver.findElement(By.xpath("//img[@title='Sony Xperia Z2 Black']"));
         assertTrue(searchLink.getText().contains(searchText));
     }
 
