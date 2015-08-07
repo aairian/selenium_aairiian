@@ -23,7 +23,7 @@ public class StylusIPhone6Test {
     private WebElement navAppleStore;
     private WebElement subIPhone;
     private WebElement itemIPhone6;
-    private WebElement isIphone6Presented;
+    private WebElement isIphone6Present;
     private WebElement prcMinFilter;
     private WebElement prcMaxFilter;
     private WebElement filterSubmitButt;
@@ -60,8 +60,8 @@ public class StylusIPhone6Test {
         action.moveToElement(itemIPhone6);
         action.click();
         action.perform();
-        isIphone6Presented = driver.findElement(By.xpath(".//*[@id='content']/h1"));
-        assertEquals("Apple iPhone 6", isIphone6Presented.getText());
+        isIphone6Present = driver.findElement(By.xpath(".//*[@id='content']/h1"));
+        assertEquals("Apple iPhone 6", isIphone6Present.getText());
 
 
         prcMinFilter = driver.findElement(By.name("price_f"));
