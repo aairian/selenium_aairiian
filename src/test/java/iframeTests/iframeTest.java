@@ -4,6 +4,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.firefox.FirefoxDriver;
+import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 
@@ -26,7 +27,6 @@ public class iframeTest {
 
     @Test
     public void iframeSwich(){
-
         driver.switchTo().frame("menu");
         WebElement menu = driver.findElement(By.xpath("html/body/h3"));
         assertEquals("Menu 1", menu.getText());
@@ -35,9 +35,13 @@ public class iframeTest {
         WebElement content = driver.findElement(By.xpath("html/body/h1"));
         assertEquals("Content", content.getText());
 
+   }
 
+    @AfterTest
+    public void tearDown()
 
+    {
+        driver.quit();
     }
-
 
 }
