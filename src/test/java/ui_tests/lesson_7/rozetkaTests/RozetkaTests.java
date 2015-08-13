@@ -30,12 +30,14 @@ public class RozetkaTests {
     }
 
     @Test
-    public void loginWithVKAccountTest (){
+    public void loginWithVKAccountTest () throws InterruptedException {
         HomePage home = new HomePage(driver);
-        LoginPage vkButton = home.openLoginPopWindow();
+        LoginPage loginPage = home.openLoginPopWindow();
+        VKLoginPage vkLoginPage = loginPage.openVKLoginWindow();
+//        vkLoginPage.entranceWithValidCredentials(login, password);
+//        assertTrue(home.findUserName.getText().contains(UserName));
+//        assertTrue(home.openUserSettings.getText().contains(UserName));
 
-//                enterToInternetShopPopWindow.click(VKButton);
-//        loginAsVKUser.sendKeys(login, password);
 
 
     }
