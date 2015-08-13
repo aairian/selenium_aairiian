@@ -30,7 +30,7 @@ public class RozetkaTests {
     }
 
     @Test
-    public void loginWithVKAccountTest () throws InterruptedException {
+    public void loginWithVKAccountTest () {
         HomePage home = new HomePage(driver);
         LoginPage loginPage = home.openLoginPopWindow();
         VKLoginPage vkLoginPage = loginPage.openVKLoginWindow();
