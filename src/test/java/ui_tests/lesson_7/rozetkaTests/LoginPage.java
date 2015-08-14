@@ -17,10 +17,11 @@ public class LoginPage {
         this.driver = driver;
     }
 
-    public VKLoginPage openVKLoginWindow() {
+    public VKLoginPage openVKLoginWindow() throws Exception {
         String currentWindowId = driver.getWindowHandle();
         WebElement openPopUpWindowButton = driver.findElement(By.xpath("//a[@class='btn-link-i' and text()='ВКонтакте']"));
         openPopUpWindowButton.click();
+        Thread.sleep(5000);
 
         Set<String> allWindows = driver.getWindowHandles();
         if (!allWindows.isEmpty()) {

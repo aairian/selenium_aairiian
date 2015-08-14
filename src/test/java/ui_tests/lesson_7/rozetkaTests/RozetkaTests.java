@@ -2,7 +2,6 @@ package ui_tests.lesson_7.rozetkaTests;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
-import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 
@@ -15,6 +14,8 @@ import static org.testng.AssertJUnit.assertEquals;
  */
 public class RozetkaTests {
     private WebDriver driver;
+//    private String login;
+//    private String password;
 
     @BeforeTest
     public void setUp (){
@@ -24,13 +25,13 @@ public class RozetkaTests {
         driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
         assertEquals("http://rozetka.com.ua/", driver.getCurrentUrl());    }
 
-    @AfterTest
-    public void tearDown(){
-        driver.close();
-    }
+//    @AfterTest
+//    public void tearDown(){
+//        driver.close();
+//    }
 
     @Test
-    public void loginWithVKAccountTest () {
+    public void loginWithVKAccountTest () throws Exception {
         HomePage home = new HomePage(driver);
         LoginPage loginPage = home.openLoginPopWindow();
         VKLoginPage vkLoginPage = loginPage.openVKLoginWindow();
