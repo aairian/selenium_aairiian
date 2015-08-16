@@ -11,13 +11,13 @@ import java.util.Set;
  */
 public class HomePage {
     private WebDriver driver;
+    private WebElement user;
 
     public HomePage(WebDriver driver) {
         this.driver = driver;
     }
 
     public LoginPage openLoginPopWindow() {
-        String parentWindowId = driver.getWindowHandle();
         WebElement openPopUpWindowButton = driver.findElement(By.name("signin"));
         openPopUpWindowButton.click();
 
@@ -25,9 +25,32 @@ public class HomePage {
         if (!allWindows.isEmpty()) {
             for (String windowId : allWindows) {
                 if (driver.switchTo().window(windowId).getTitle().equals("Вход в интернет-магазин")) ;
-                driver.close();
+
+
             }
         }
         return new LoginPage(driver);
     }
+
+
+    public WebElement findUserName() {
+        Set<String> allWindows = driver.getWindowHandles();
+        if (!allWindows.isEmpty()) {
+            for (String windowId : allWindows) {
+                driver.switchTo().window(windowId);
+                if (driver.getCurrentUrl().equals("http://rozetka.com.ua/"));
+                }
+        }
+        user = driver.findElement(By.name("profile"));
+        return user;
+    }
+
+    public PersonalDataPage openPersonalData(){
+       user.click();
+        return new PersonalDataPage(driver);
+    }
+
+
+
 }
+
