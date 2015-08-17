@@ -38,7 +38,7 @@ public class GridTest {
 
         }
             if (browser.equalsIgnoreCase("Firefox")) {
-                caps = DesiredCapabilities.chrome();
+                caps = DesiredCapabilities.firefox();
             }
 
 
