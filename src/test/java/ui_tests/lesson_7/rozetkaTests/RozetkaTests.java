@@ -9,17 +9,12 @@ import org.testng.annotations.Test;
 import java.util.concurrent.TimeUnit;
 
 import static org.testng.AssertJUnit.assertEquals;
-import static org.testng.AssertJUnit.assertTrue;
 
 /**
  * Created by anny on 09.08.15.
  */
 public class RozetkaTests {
     private WebDriver driver;
-    private String login = "funic89@gmail.com";
-    private String password = "*******";
-    private String userName = "Эмилия Деклик";
-    private String personalDataText = "Личные данные";
 
     @BeforeTest
     public void setUp (){
@@ -34,16 +29,14 @@ public class RozetkaTests {
         driver.close();
     }
 
-
     @Test
-    public void loginWithVKAccountTest () throws Exception {
+    public void loginWithVKAccountTest (){
         HomePage home = new HomePage(driver);
-        LoginPage loginPage = home.openLoginPopWindow();
-        VKLoginPage vkLoginPage = loginPage.openVKLoginWindow();
-        HomePage user = vkLoginPage.entranceWithValidCredentials(login, password);
-        assertTrue(user.findUserName().getText().contains(userName));
-        PersonalDataPage myPersonalData = user.openPersonalData();
-        assertTrue(myPersonalData.findTitle().getText().contains(personalDataText));
+        LoginPage vkButton = home.openLoginPopWindow();
+
+//                enterToInternetShopPopWindow.click(VKButton);
+//        loginAsVKUser.sendKeys(login, password);
+
 
     }
 
