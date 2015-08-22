@@ -5,15 +5,13 @@ import org.openqa.selenium.firefox.FirefoxDriver;
 import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
+import pages.ComputersNotebooksPage;
 import pages.HomePage;
-import pages.LoginPage;
-import pages.PersonalDataPage;
-import pages.VKLoginPage;
 
 import java.util.concurrent.TimeUnit;
 
+import static org.testng.Assert.assertTrue;
 import static org.testng.AssertJUnit.assertEquals;
-import static org.testng.AssertJUnit.assertTrue;
 
 /**
  * Created by anny on 09.08.15.
@@ -24,6 +22,7 @@ public class RozetkaTests {
     private String password = "hayriyan89";
     private String userName = "Эмилия Деклик";
     private String personalDataText = "Личные данные";
+    private String computersNotebooksTitleText = "Компьютеры и ноутбуки";
 
     @BeforeTest
     public void setUp (){
@@ -40,19 +39,24 @@ public class RozetkaTests {
 
 
     @Test
-    public void loginWithVKAccountTest () throws Exception {
+    public void seleniumCourseFinalTask(){
         HomePage home = new HomePage(driver);
-        LoginPage loginPage = home.openLoginPopWindow();
-        VKLoginPage vkLoginPage = loginPage.openVKLoginWindow();
-        HomePage user = vkLoginPage.entranceWithValidCredentials(login, password);
-        assertTrue(user.findUserName().getText().contains(userName));
-        PersonalDataPage myPersonalData = user.openPersonalData();
-        assertTrue(myPersonalData.findTitle().getText().contains(personalDataText));
+        ComputersNotebooksPage onComputerNotebooksPage = home.openComputersNotebooks();
+        assertTrue(onComputerNotebooksPage.findTitle().getText().contains(computersNotebooksTitleText));
+//        NotebooksPage allNotebooks = onComputerNotebooksPage.verifyNotebooksVariants().selectAllVariants();
 
     }
 
 //    @Test
-//    public void finalTask
-
+//    public void loginWithVKAccountTest () throws Exception {
+//        HomePage home = new HomePage(driver);
+//        LoginPage loginPage = home.openLoginPopWindow();
+//        VKLoginPage vkLoginPage = loginPage.openVKLoginWindow();
+//        HomePage user = vkLoginPage.entranceWithValidCredentials(login, password);
+//        assertTrue(user.findUserName().getText().contains(userName));
+//        PersonalDataPage myPersonalData = user.openPersonalData();
+//        assertTrue(myPersonalData.findTitle().getText().contains(personalDataText));
+//
+//    }
 
 }
