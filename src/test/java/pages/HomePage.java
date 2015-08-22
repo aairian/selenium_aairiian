@@ -25,8 +25,6 @@ public class HomePage {
         if (!allWindows.isEmpty()) {
             for (String windowId : allWindows) {
                 if (driver.switchTo().window(windowId).getTitle().equals("Вход в интернет-магазин")) ;
-
-
             }
         }
         return new LoginPage(driver);
@@ -48,6 +46,11 @@ public class HomePage {
     public PersonalDataPage openPersonalData(){
        user.click();
         return new PersonalDataPage(driver);
+    }
+
+    public ComputersNotebooksPage openComputersNotebooks(){
+        driver.findElement(By.name("fat_menu_link")).click();
+        return new ComputersNotebooksPage(driver);
     }
 
 
