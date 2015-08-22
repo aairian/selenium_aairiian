@@ -1,4 +1,4 @@
-package ui_tests.lesson_7.rozetkaTests;
+package pages;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
