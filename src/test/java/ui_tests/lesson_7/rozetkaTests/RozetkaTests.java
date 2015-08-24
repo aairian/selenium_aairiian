@@ -25,6 +25,7 @@ public class RozetkaTests {
     private String userName = "Эмилия Деклик";
     private String personalDataText = "Личные данные";
     private String computersNotebooksTitleText = "Компьютеры и ноутбуки";
+    private String appleManufacture = "Apple";
 
     @BeforeTest
     public void setUp (){
@@ -47,7 +48,7 @@ public class RozetkaTests {
         assertTrue(onComputerNotebooksPage.findTitle().getText().contains(computersNotebooksTitleText));
         NotebooksPage onNotebooksPage = onComputerNotebooksPage.verifyNumberOfNotebooksVariantsAndSelectAllNotebooksLink();
         assertEquals(9, onNotebooksPage.findListOfManufacture().size());
-        NotebooksApplePage onNotebooksApplePage = onNotebooksPage.findOpenAppleManufacture();
+        NotebooksApplePage onNotebooksApplePage = onNotebooksPage.openManufacture(appleManufacture);
         //        onNotebooksPage.verifyNumberOfManufacturesVariants();
 
 

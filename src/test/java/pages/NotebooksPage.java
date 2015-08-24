@@ -11,7 +11,7 @@ import java.util.List;
  */
 public class NotebooksPage {
     private WebDriver driver;
-    private String manufactureName = "Apple";
+    private String manufactureName;
 
 
     public NotebooksPage(WebDriver driver) {
@@ -27,17 +27,14 @@ public class NotebooksPage {
     }
 
 
-    public NotebooksApplePage findOpenAppleManufacture() {
-        int iSize = findListOfManufacture().size();
-        for (int i = 0; i <= iSize; i++) {
-            if (findListOfManufacture().get(i).equals(manufactureName));
-            {
-                WebElement manufacture = driver.
-                        findElement(By.xpath("//a[@class='m-cat-subl-i-link' and contains(text(), 'Apple')]"));
+    public NotebooksApplePage openManufacture(String manufactureName) {
+        for (WebElement manufacture : findListOfManufacture()){
+            if (manufacture.getText().equals(manufactureName)){
                 manufacture.click();
                 break;
             }
         }
+
         return new NotebooksApplePage(driver);
     }
 }
