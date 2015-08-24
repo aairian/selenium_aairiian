@@ -21,11 +21,12 @@ import static org.testng.AssertJUnit.assertEquals;
 public class RozetkaTests {
     private WebDriver driver;
     private String login = "funic89@gmail.com";
-    private String password = "hayriyan89";
+    private String password = "*********";
     private String userName = "Эмилия Деклик";
     private String personalDataText = "Личные данные";
     private String computersNotebooksTitleText = "Компьютеры и ноутбуки";
     private String appleManufacture = "Apple";
+    private String appleNotebooksPageTitleText = "Ноутбуки Apple";
 
     @BeforeTest
     public void setUp (){
@@ -47,8 +48,9 @@ public class RozetkaTests {
         ComputersNotebooksPage onComputerNotebooksPage = home.openComputersNotebooks();
         assertTrue(onComputerNotebooksPage.findTitle().getText().contains(computersNotebooksTitleText));
         NotebooksPage onNotebooksPage = onComputerNotebooksPage.verifyNumberOfNotebooksVariantsAndSelectAllNotebooksLink();
-        assertEquals(9, onNotebooksPage.findListOfManufacture().size());
+        assertEquals(9, onNotebooksPage.listOfManufacture().size());
         NotebooksApplePage onNotebooksApplePage = onNotebooksPage.openManufacture(appleManufacture);
+        assertTrue(onNotebooksApplePage.findPageTitle().getText().contains(appleNotebooksPageTitleText));
         //        onNotebooksPage.verifyNumberOfManufacturesVariants();
 
 

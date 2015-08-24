@@ -19,7 +19,7 @@ public class NotebooksPage {
     }
 
 
-    public List<WebElement> findListOfManufacture() {
+    public List<WebElement> listOfManufacture() {
 
         WebElement manufacturers = driver.findElement(By.xpath("//h4[@class='m-cat-l-i-title' and contains(text(), 'Производители')]/following-sibling::ul"));
         List<WebElement> listOfmanufacturers = manufacturers.findElements(By.tagName("a"));
@@ -28,7 +28,7 @@ public class NotebooksPage {
 
 
     public NotebooksApplePage openManufacture(String manufactureName) {
-        for (WebElement manufacture : findListOfManufacture()){
+        for (WebElement manufacture : listOfManufacture()){
             if (manufacture.getText().equals(manufactureName)){
                 manufacture.click();
                 break;
