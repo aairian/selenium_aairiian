@@ -5,10 +5,7 @@ import org.openqa.selenium.firefox.FirefoxDriver;
 import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
-import pages.ComputersNotebooksPage;
-import pages.HomePage;
-import pages.NotebooksApplePage;
-import pages.NotebooksPage;
+import pages.*;
 
 import java.util.concurrent.TimeUnit;
 
@@ -51,7 +48,9 @@ public class RozetkaTests {
         assertEquals(9, onNotebooksPage.listOfManufacture().size());
         NotebooksApplePage onNotebooksApplePage = onNotebooksPage.openManufacture(appleManufacture);
         assertTrue(onNotebooksApplePage.findPageTitle().getText().contains(appleNotebooksPageTitleText));
-        //        onNotebooksPage.verifyNumberOfManufacturesVariants();
+        AppleExpensiveFilterPage onAppleExpensiveFilterPage = onNotebooksApplePage.setExpensiveFilter();
+
+
 
 
 
