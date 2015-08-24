@@ -7,6 +7,7 @@ import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 import pages.ComputersNotebooksPage;
 import pages.HomePage;
+import pages.NotebooksApplePage;
 import pages.NotebooksPage;
 
 import java.util.concurrent.TimeUnit;
@@ -45,7 +46,12 @@ public class RozetkaTests {
         ComputersNotebooksPage onComputerNotebooksPage = home.openComputersNotebooks();
         assertTrue(onComputerNotebooksPage.findTitle().getText().contains(computersNotebooksTitleText));
         NotebooksPage onNotebooksPage = onComputerNotebooksPage.verifyNumberOfNotebooksVariantsAndSelectAllNotebooksLink();
-//        .selectAllNotebooksLink();
+        assertEquals(9, onNotebooksPage.findListOfManufacture().size());
+        NotebooksApplePage onNotebooksApplePage = onNotebooksPage.findOpenAppleManufacture();
+        //        onNotebooksPage.verifyNumberOfManufacturesVariants();
+
+
+
 
     }
 
