@@ -24,6 +24,7 @@ public class RozetkaTests {
     private String computersNotebooksTitleText = "Компьютеры и ноутбуки";
     private String appleManufacture = "Apple";
     private String appleNotebooksPageTitleText = "Ноутбуки Apple";
+    private String expensiveFilter = "от дорогих к дешевым";
 
     @BeforeTest
     public void setUp (){
@@ -40,7 +41,7 @@ public class RozetkaTests {
 
 
     @Test
-    public void seleniumCourseFinalTask(){
+    public void seleniumCourseFinalTask() throws InterruptedException {
         HomePage home = new HomePage(driver);
         ComputersNotebooksPage onComputerNotebooksPage = home.openComputersNotebooks();
         assertTrue(onComputerNotebooksPage.findTitle().getText().contains(computersNotebooksTitleText));
@@ -48,7 +49,7 @@ public class RozetkaTests {
         assertEquals(9, onNotebooksPage.listOfManufacture().size());
         NotebooksApplePage onNotebooksApplePage = onNotebooksPage.openManufacture(appleManufacture);
         assertTrue(onNotebooksApplePage.findPageTitle().getText().contains(appleNotebooksPageTitleText));
-        AppleExpensiveFilterPage onAppleExpensiveFilterPage = onNotebooksApplePage.setExpensiveFilter();
+        AppleExpensiveFilterPage onAppleExpensiveFilterPage = onNotebooksApplePage.setFilter(expensiveFilter);
 
 
 

@@ -3,9 +3,9 @@ package pages;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.ui.Select;
 
-import static org.testng.Assert.assertFalse;
+import java.util.List;
+import java.util.Set;
 
 /**
  * Created by anny on 23.08.15.
@@ -13,6 +13,7 @@ import static org.testng.Assert.assertFalse;
 public class NotebooksApplePage {
     private WebDriver driver;
     private WebElement pageTitle;
+    private WebElement expensiveFilter;
 
     public NotebooksApplePage (WebDriver driver){this.driver=driver;}
 
@@ -21,13 +22,36 @@ public class NotebooksApplePage {
         return pageTitle;
     }
 
-    public AppleExpensiveFilterPage setExpensiveFilter(){
-        Select expensiveFilter = new Select(driver.findElement(By.name("drop_menu")));
-        assertFalse(expensiveFilter.isMultiple());
-        expensiveFilter.selectByVisibleText("от дорогих к дешевым");
+    public List<WebElement> filterList () throws InterruptedException {
+
+        WebElement filterView = driver.findElement(By.name("drop_link"));
+        filterView.click();
+        Thread.sleep(5000);
+
+        Set<String> allWindows = driver.getWindowHandles();
+        if (!allWindows.isEmpty()) {
+            for (String sortListPopWindow : allWindows) {
+                if (driver.switchTo().window(sortListPopWindow).getTitle().equals()) {
+                }
+                WebElement expensiveFilter = driver.findElement(By.xpath("//a[@class='sort-view-l-i-link novisited sprite-side' and contains(text(), 'от дорогих к дешевым')]"));
+            }
+        }
+        return filterList;
+    }
+
+
+    public AppleExpensiveFilterPage setFilter(String filterText) {
+        for(WebElement filter : filterList()){
+        if (filter.getText().equals(filterText)){
+            filter.click();
+        }
+    }
         return new AppleExpensiveFilterPage(driver);
     }
 
 
 
 }
+
+
+
