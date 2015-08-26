@@ -31,16 +31,18 @@ public class NotebooksApplePage {
         Set<String> allWindows = driver.getWindowHandles();
         if (!allWindows.isEmpty()) {
             for (String sortListPopWindow : allWindows) {
-                if (driver.switchTo().window(sortListPopWindow).getTitle().equals()) {
+                if (driver.switchTo().window(sortListPopWindow).getTitle().equals("по рейтингу")) {
                 }
-                WebElement expensiveFilter = driver.findElement(By.xpath("//a[@class='sort-view-l-i-link novisited sprite-side' and contains(text(), 'от дорогих к дешевым')]"));
             }
         }
+
+        WebElement filterDropMenu = driver.findElement(By.name("drop_menu"));
+        List<WebElement> filterList = filterDropMenu.findElements(By.tagName("a"));
         return filterList;
     }
 
 
-    public AppleExpensiveFilterPage setFilter(String filterText) {
+    public AppleExpensiveFilterPage setFilter(String filterText) throws InterruptedException {
         for(WebElement filter : filterList()){
         if (filter.getText().equals(filterText)){
             filter.click();
