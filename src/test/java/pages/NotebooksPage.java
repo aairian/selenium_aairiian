@@ -11,7 +11,6 @@ import java.util.List;
  */
 public class NotebooksPage {
     private WebDriver driver;
-    private String manufactureName;
 
 
     public NotebooksPage(WebDriver driver) {

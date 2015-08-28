@@ -13,7 +13,8 @@ import java.util.Set;
 public class NotebooksApplePage {
     private WebDriver driver;
     private WebElement pageTitle;
-    private WebElement expensiveFilter;
+
+
 
     public NotebooksApplePage (WebDriver driver){this.driver=driver;}
 
@@ -23,11 +24,8 @@ public class NotebooksApplePage {
     }
 
     public List<WebElement> filterList () throws InterruptedException {
-
         WebElement filterView = driver.findElement(By.name("drop_link"));
         filterView.click();
-        Thread.sleep(5000);
-
         Set<String> allWindows = driver.getWindowHandles();
         if (!allWindows.isEmpty()) {
             for (String sortListPopWindow : allWindows) {
@@ -35,7 +33,6 @@ public class NotebooksApplePage {
                 }
             }
         }
-
         WebElement filterDropMenu = driver.findElement(By.name("drop_menu"));
         List<WebElement> filterList = filterDropMenu.findElements(By.tagName("a"));
         return filterList;
@@ -46,6 +43,7 @@ public class NotebooksApplePage {
         for(WebElement filter : filterList()){
         if (filter.getText().equals(filterText)){
             filter.click();
+            break;
         }
     }
         return new AppleExpensiveFilterPage(driver);

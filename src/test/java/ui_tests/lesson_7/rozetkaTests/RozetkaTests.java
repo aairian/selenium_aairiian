@@ -24,7 +24,8 @@ public class RozetkaTests {
     private String computersNotebooksTitleText = "Компьютеры и ноутбуки";
     private String appleManufacture = "Apple";
     private String appleNotebooksPageTitleText = "Ноутбуки Apple";
-    private String expensiveFilter = "от дорогих к дешевым";
+    private String expensivefilter = "от дорогих к дешевым";
+    private String appleMacBookProRetinaZ0QP000X6 = "Apple MacBook Pro Retina 13\" (Z0QP000X6)";
 
     @BeforeTest
     public void setUp (){
@@ -49,7 +50,10 @@ public class RozetkaTests {
         assertEquals(9, onNotebooksPage.listOfManufacture().size());
         NotebooksApplePage onNotebooksApplePage = onNotebooksPage.openManufacture(appleManufacture);
         assertTrue(onNotebooksApplePage.findPageTitle().getText().contains(appleNotebooksPageTitleText));
-        AppleExpensiveFilterPage onAppleExpensiveFilterPage = onNotebooksApplePage.setFilter(expensiveFilter);
+        AppleExpensiveFilterPage onAppleExpensiveFilterPage = onNotebooksApplePage.setFilter(expensivefilter);
+        assertTrue(onAppleExpensiveFilterPage.findItem(appleMacBookProRetinaZ0QP000X6).getText().contains(appleMacBookProRetinaZ0QP000X6));
+//        assertTrue(onAppleExpensiveFilterPage.findItem(appleMacBookProRetinaZ0QP000X6).addToCompare.findItemOnCompareList.getText().contains(appleMacBookProRetinaZ0QP000X6));
+
 
 
 
