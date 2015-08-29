@@ -52,7 +52,9 @@ public class RozetkaTests {
         assertTrue(onNotebooksApplePage.findPageTitle().getText().contains(appleNotebooksPageTitleText));
         AppleExpensiveFilterPage onAppleExpensiveFilterPage = onNotebooksApplePage.setFilter(expensivefilter);
         assertTrue(onAppleExpensiveFilterPage.findItem(appleMacBookProRetinaZ0QP000X6).getText().contains(appleMacBookProRetinaZ0QP000X6));
-//        assertTrue(onAppleExpensiveFilterPage.findItem(appleMacBookProRetinaZ0QP000X6).addToCompare.findItemOnCompareList.getText().contains(appleMacBookProRetinaZ0QP000X6));
+        AppleExpensiveFilterPage comparisonItem = onAppleExpensiveFilterPage.addToCompare(appleMacBookProRetinaZ0QP000X6);
+        assertTrue(comparisonItem.findItemInCompareList(appleMacBookProRetinaZ0QP000X6).getText().contains(appleMacBookProRetinaZ0QP000X6));
+
 
 
 
