@@ -26,6 +26,7 @@ public class RozetkaTests {
     private String appleNotebooksPageTitleText = "Ноутбуки Apple";
     private String expensivefilter = "от дорогих к дешевым";
     private String appleMacBookProRetinaZ0QP000X6 = "Apple MacBook Pro Retina 13\" (Z0QP000X6)";
+    private String appleMacBookProRetinaMGXA2UA = "Apple MacBook Pro Retina 15\" (MGXA2UA/A)";
 
     @BeforeTest
     public void setUp (){
@@ -47,13 +48,20 @@ public class RozetkaTests {
         ComputersNotebooksPage onComputerNotebooksPage = home.openComputersNotebooks();
         assertTrue(onComputerNotebooksPage.findTitle().getText().contains(computersNotebooksTitleText));
         NotebooksPage onNotebooksPage = onComputerNotebooksPage.verifyNumberOfNotebooksVariantsAndSelectAllNotebooksLink();
+
         assertEquals(9, onNotebooksPage.listOfManufacture().size());
         NotebooksApplePage onNotebooksApplePage = onNotebooksPage.openManufacture(appleManufacture);
         assertTrue(onNotebooksApplePage.findPageTitle().getText().contains(appleNotebooksPageTitleText));
         AppleExpensiveFilterPage onAppleExpensiveFilterPage = onNotebooksApplePage.setFilter(expensivefilter);
+
         assertTrue(onAppleExpensiveFilterPage.findItem(appleMacBookProRetinaZ0QP000X6).getText().contains(appleMacBookProRetinaZ0QP000X6));
-        AppleExpensiveFilterPage comparisonItem = onAppleExpensiveFilterPage.addToCompare(appleMacBookProRetinaZ0QP000X6);
-        assertTrue(comparisonItem.findItemInCompareList(appleMacBookProRetinaZ0QP000X6).getText().contains(appleMacBookProRetinaZ0QP000X6));
+        AppleExpensiveFilterPage comparisonItemOne = onAppleExpensiveFilterPage.addToCompare(appleMacBookProRetinaZ0QP000X6);
+        assertTrue(comparisonItemOne.findItemInCompareList(appleMacBookProRetinaZ0QP000X6).getText().contains(appleMacBookProRetinaZ0QP000X6));
+
+        assertTrue(onAppleExpensiveFilterPage.findItem(appleMacBookProRetinaMGXA2UA).getText().contains(appleMacBookProRetinaMGXA2UA));
+        AppleExpensiveFilterPage comparisonItemTwo = onAppleExpensiveFilterPage.addToCompare(appleMacBookProRetinaMGXA2UA);
+        assertTrue(comparisonItemTwo.findItemInCompareList(appleMacBookProRetinaMGXA2UA).getText().contains(appleMacBookProRetinaMGXA2UA));
+
 
 
 

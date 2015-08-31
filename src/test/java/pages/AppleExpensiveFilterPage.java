@@ -13,13 +13,14 @@ import static org.testng.AssertJUnit.assertTrue;
  */
 public class AppleExpensiveFilterPage {
     private WebDriver driver;
-    private WebElement toComparison;
+
 
     public AppleExpensiveFilterPage (WebDriver driver){this.driver=driver;}
 
+
     public WebElement findItem (String itemName){
-        List<WebElement> listOfItems = driver.findElements(By.xpath("//*[@class='g-i-tile-i-title clearfix']/a"));
-        for(WebElement item : listOfItems){
+        List<WebElement> goodsBox = driver.findElements(By.className("g-i-tile-i-box"));
+        for(WebElement item : goodsBox){
             if (item.getText().contains(itemName)){
                 return item;
             }
@@ -28,10 +29,15 @@ public class AppleExpensiveFilterPage {
     }
 
     public AppleExpensiveFilterPage addToCompare(String itemName){
-        toComparison = findItem(itemName).findElement(By.xpath("../following-sibling::div[@class='g-tools-container clearfix']/ul/li[@class='g-tools-i g-tools-delimiter']/div/label"));
-        toComparison.click();
+        List<WebElement> compareImgs = findItem(itemName).findElements(By.tagName("img"));
+        for (WebElement compareImg : compareImgs){
+            if (compareImg.getAttribute("title").contains("Добавить к сравнению")){
+                compareImg.click();
+            }
+        }
         return new AppleExpensiveFilterPage(driver);
     }
+
     public WebElement comparisonBlock (){
         WebElement comparisonBlock = driver.findElement(By.id("catalog-comparison"));
         comparisonBlock.isEnabled();
