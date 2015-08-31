@@ -54,6 +54,14 @@ public class AppleExpensiveFilterPage {
         }
         return findItemInCompareList(itemName);
     }
+
+    public NotebooksComparisonPage compareItems (){
+        WebElement comparisonButton = comparisonBlock().findElement(By.tagName("span"));
+        if (comparisonButton.getText().contains("Сравнить")){
+            comparisonButton.click();
+        }
+        return new NotebooksComparisonPage(driver);
+    }
 }
 
 

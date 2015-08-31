@@ -62,6 +62,9 @@ public class RozetkaTests {
         AppleExpensiveFilterPage comparisonItemTwo = onAppleExpensiveFilterPage.addToCompare(appleMacBookProRetinaMGXA2UA);
         assertTrue(comparisonItemTwo.findItemInCompareList(appleMacBookProRetinaMGXA2UA).getText().contains(appleMacBookProRetinaMGXA2UA));
 
+        NotebooksComparisonPage comparisonNotebooks = onAppleExpensiveFilterPage.compareItems();
+
+
 
 
 
