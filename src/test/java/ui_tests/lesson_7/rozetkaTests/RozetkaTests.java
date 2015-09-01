@@ -27,6 +27,7 @@ public class RozetkaTests {
     private String expensivefilter = "от дорогих к дешевым";
     private String appleMacBookProRetinaZ0QP000X6 = "Apple MacBook Pro Retina 13\" (Z0QP000X6)";
     private String appleMacBookProRetinaMGXA2UA = "Apple MacBook Pro Retina 15\" (MGXA2UA/A)";
+    private String comparisonPageHeaderText = "Сравниваем ноутбуки";
 
     @BeforeTest
     public void setUp (){
@@ -63,28 +64,23 @@ public class RozetkaTests {
         assertTrue(comparisonItemTwo.findItemInCompareList(appleMacBookProRetinaMGXA2UA).getText().contains(appleMacBookProRetinaMGXA2UA));
 
         NotebooksComparisonPage comparisonNotebooks = onAppleExpensiveFilterPage.compareItems();
+        assertTrue(comparisonNotebooks.findPageHeader().getText().contains(comparisonPageHeaderText));
 
-
-
-
-
-
-
-
-
+        assertTrue(comparisonNotebooks.findComparedItem(appleMacBookProRetinaZ0QP000X6).getText().contains(appleMacBookProRetinaZ0QP000X6));
+        assertTrue(comparisonNotebooks.findComparedItem(appleMacBookProRetinaMGXA2UA).getText().contains(appleMacBookProRetinaMGXA2UA));
 
     }
 
-//    @Test
-//    public void loginWithVKAccountTest () throws Exception {
-//        HomePage home = new HomePage(driver);
-//        LoginPage loginPage = home.openLoginPopWindow();
-//        VKLoginPage vkLoginPage = loginPage.openVKLoginWindow();
-//        HomePage user = vkLoginPage.entranceWithValidCredentials(login, password);
-//        assertTrue(user.findUserName().getText().contains(userName));
-//        PersonalDataPage myPersonalData = user.openPersonalData();
-//        assertTrue(myPersonalData.findTitle().getText().contains(personalDataText));
-//
-//    }
+    @Test
+    public void loginWithVKAccountTest () throws Exception {
+        HomePage home = new HomePage(driver);
+        LoginPage loginPage = home.openLoginPopWindow();
+        VKLoginPage vkLoginPage = loginPage.openVKLoginWindow();
+        HomePage user = vkLoginPage.entranceWithValidCredentials(login, password);
+        assertTrue(user.findUserName().getText().contains(userName));
+        PersonalDataPage myPersonalData = user.openPersonalData();
+        assertTrue(myPersonalData.findTitle().getText().contains(personalDataText));
+
+    }
 
 }
