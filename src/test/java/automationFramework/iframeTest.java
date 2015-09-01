@@ -1,4 +1,4 @@
-package popUpWindow;
+package automationFramework;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -8,7 +8,6 @@ import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 
-import java.util.Set;
 import java.util.concurrent.TimeUnit;
 
 import static org.testng.AssertJUnit.assertEquals;
@@ -16,30 +15,27 @@ import static org.testng.AssertJUnit.assertEquals;
 /**
  * Created by selenium on 10.08.2015.
  */
-public class popUpWindowTest {
+public class iframeTest {
     private WebDriver driver;
 
     @BeforeTest
     public void setUp (){
         driver = new FirefoxDriver();
-        driver.get("http://www.quackit.com/html/codes/html_popup_window_code.cfm");
+        driver.get("http://www.quackit.com/html/templates/frames/frames_example_1.html");
         driver.manage().window().maximize();
         driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);}
 
     @Test
-    public void popUpWindowWithTitle(){
-        String parentWindowId = driver.getWindowHandle();
-        WebElement openPopUpWindowButton = driver.findElement(By.xpath("html/body/div[1]/div/article/div[2]/div[2]/div[2]/div/h4/a"));
-        openPopUpWindowButton.click();
+    public void iframeSwich(){
+        driver.switchTo().frame("menu");
+        WebElement menu = driver.findElement(By.xpath("html/body/h3"));
+        assertEquals("Menu 1", menu.getText());
+        driver.switchTo().defaultContent();
+        driver.switchTo().frame("content");
+        WebElement content = driver.findElement(By.xpath("html/body/h1"));
+        assertEquals("Content", content.getText());
 
-        Set<String> allWindows = driver.getWindowHandles();
-        if(!allWindows.isEmpty()){
-            for (String windowId : allWindows){
-                if (driver.switchTo().window(windowId).getTitle().equals("Open a popup window"));
-                driver.close();
-            }
-        }
-    }
+   }
 
     @AfterTest
     public void tearDown()
@@ -49,4 +45,3 @@ public class popUpWindowTest {
     }
 
 }
-

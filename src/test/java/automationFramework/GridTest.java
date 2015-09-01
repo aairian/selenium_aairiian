@@ -1,4 +1,4 @@
-package ui_tests.lesson_7;
+package automationFramework;
 
 
 import org.openqa.selenium.*;

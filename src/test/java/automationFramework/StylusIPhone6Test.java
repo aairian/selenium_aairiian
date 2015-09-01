@@ -1,4 +1,4 @@
-package ui_tests.lesson_7.lesson_7;
+package automationFramework;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;

@@ -1,11 +1,11 @@
-package ui_tests.lesson_7.rozetkaTests;
+package automationFramework;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
-import pages.*;
+import pageObjects.*;
 
 import java.util.concurrent.TimeUnit;
 
