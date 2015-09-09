@@ -1,7 +1,7 @@
 package automationFramework;
 
+import core.BrowserFactory;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.firefox.FirefoxDriver;
 import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
@@ -31,7 +31,8 @@ public class RozetkaTests {
 
     @BeforeTest
     public void setUp (){
-        driver = new FirefoxDriver();
+//        driver = new FirefoxDriver();
+        WebDriver driver = BrowserFactory.getBrowser("Chrome");
         driver.get("http://rozetka.com.ua/");
         driver.manage().window().maximize();
         driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
@@ -71,16 +72,16 @@ public class RozetkaTests {
 
     }
 
-    @Test
-    public void loginWithVKAccountTest () throws Exception {
-        HomePage home = new HomePage(driver);
-        LoginPage loginPage = home.openLoginPopWindow();
-        VKLoginPage vkLoginPage = loginPage.openVKLoginWindow();
-        HomePage user = vkLoginPage.entranceWithValidCredentials(login, password);
-        assertTrue(user.findUserName().getText().contains(userName));
-        PersonalDataPage myPersonalData = user.openPersonalData();
-        assertTrue(myPersonalData.findTitle().getText().contains(personalDataText));
-
-    }
+//    @Test
+//    public void loginWithVKAccountTest () throws Exception {
+//        HomePage home = new HomePage(driver);
+//        LoginPage loginPage = home.openLoginPopWindow();
+//        VKLoginPage vkLoginPage = loginPage.openVKLoginWindow();
+//        HomePage user = vkLoginPage.entranceWithValidCredentials(login, password);
+//        assertTrue(user.findUserName().getText().contains(userName));
+//        PersonalDataPage myPersonalData = user.openPersonalData();
+//        assertTrue(myPersonalData.findTitle().getText().contains(personalDataText));
+//
+//    }
 
 }
