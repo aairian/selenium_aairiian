@@ -43,7 +43,7 @@ import java.util.Map;
                     driver = drivers.get("Chrome");
                     if (driver == null) {
                         System.setProperty("webdriver.chrome.driver",
-                                "/usr/local/bin/chromedriver");
+                                "/usr/bin/chromedriver");
                         driver = new ChromeDriver();
                         drivers.put("Chrome", driver);
                     }
