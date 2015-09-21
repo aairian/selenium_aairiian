@@ -1,13 +1,11 @@
 package automationFramework;
 
 import core.BrowserFactory;
+import core.TestBase;
 import org.openqa.selenium.WebDriver;
 import org.testng.annotations.AfterTest;
-import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 import pageObjects.*;
-
-import java.util.concurrent.TimeUnit;
 
 import static org.testng.Assert.assertTrue;
 import static org.testng.AssertJUnit.assertEquals;
@@ -15,36 +13,10 @@ import static org.testng.AssertJUnit.assertEquals;
 /**
  * Created by anny on 09.08.15.
  */
-public class RozetkaTests {
-    private WebDriver driver;
-    private String login = "funic89@gmail.com";
-    private String password = "*********";
-    private String userName = "Эмилия Деклик";
-    private String personalDataText = "Личные данные";
-    private String computersNotebooksTitleText = "Компьютеры и ноутбуки";
-    private String appleManufacture = "Apple";
-    private String appleNotebooksPageTitleText = "Ноутбуки Apple";
-    private String expensivefilter = "от дорогих к дешевым";
-    private String appleMacBookProRetinaZ0QP000X6 = "Apple MacBook Pro Retina 13\" (Z0QP000X6)";
-    private String appleMacBookProRetinaMGXA2UA = "Apple MacBook Pro Retina 15\" (MGXA2UA/A)";
-    private String comparisonPageHeaderText = "Сравниваем ноутбуки";
-
-    @BeforeTest
-    public void setUp (){
-//        driver = new FirefoxDriver();
-        WebDriver driver = BrowserFactory.getBrowser("Chrome");
-        driver.get("http://rozetka.com.ua/");
-        driver.manage().window().maximize();
-        driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
-        assertEquals("http://rozetka.com.ua/", driver.getCurrentUrl());    }
-
-    @AfterTest
-    public void tearDown(){
-        driver.close();
-    }
+public class RozetkaTests extends TestBase{
 
 
-    @Test
+    @Test (enabled = true)
     public void seleniumCourseFinalTask() throws InterruptedException {
         HomePage home = new HomePage(driver);
         ComputersNotebooksPage onComputerNotebooksPage = home.openComputersNotebooks();
@@ -72,16 +44,37 @@ public class RozetkaTests {
 
     }
 
-//    @Test
-//    public void loginWithVKAccountTest () throws Exception {
-//        HomePage home = new HomePage(driver);
-//        LoginPage loginPage = home.openLoginPopWindow();
-//        VKLoginPage vkLoginPage = loginPage.openVKLoginWindow();
-//        HomePage user = vkLoginPage.entranceWithValidCredentials(login, password);
-//        assertTrue(user.findUserName().getText().contains(userName));
-//        PersonalDataPage myPersonalData = user.openPersonalData();
-//        assertTrue(myPersonalData.findTitle().getText().contains(personalDataText));
-//
-//    }
+    @Test (enabled = false)
+    public void loginWithVKAccountTest () throws Exception {
+        HomePage home = new HomePage(driver);
+        LoginPage loginPage = home.openLoginPopWindow();
+        VKLoginPage vkLoginPage = loginPage.openVKLoginWindow();
+        HomePage user = vkLoginPage.entranceWithValidCredentials(login, password);
+        assertTrue(user.findUserName().getText().contains(userName));
+        PersonalDataPage myPersonalData = user.openPersonalData();
+        assertTrue(myPersonalData.findTitle().getText().contains(personalDataText));
+
+    }
+
+    @Test (enabled = false)
+    public void sampleTest002()
+    {
+        WebDriver driver = BrowserFactory.getBrowser("Chrome");
+
+
+        //Test that both the browsers are actually only one instance of chrome driver
+        WebDriver driver1 = BrowserFactory.getBrowser("Chrome");
+        if(driver.equals(driver1))
+        {
+            System.out.println("The two chrome drivers are same");
+        }
+    }
+
+
+    @AfterTest
+    public void tearDown()
+    { BrowserFactory.closeAllDriver();
+    }
+
 
 }

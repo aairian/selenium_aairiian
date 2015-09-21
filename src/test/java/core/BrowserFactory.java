@@ -7,50 +7,47 @@ import org.openqa.selenium.firefox.FirefoxDriver;
 import java.util.HashMap;
 import java.util.Map;
 
-/**
- * Created by anny on 09.09.15.
- */
 
+public class BrowserFactory {
 
-    public class BrowserFactory {
+    private static Map<String, WebDriver> drivers = new HashMap<String, WebDriver>();
 
-        private static Map<String, WebDriver> drivers = new HashMap<String, WebDriver>();
+    /*
+     * Factory method for getting browsers
+     */
+    public static WebDriver getBrowser(String browserName) {
+        WebDriver driver = null;
 
-        /*
-         * Factory method for getting browsers
-         */
-        public static WebDriver getBrowser(String browserName) {
-            WebDriver driver = null;
+        switch (browserName) {
+            case "Firefox":
+                driver = drivers.get("Firefox");
+                if (driver == null) {
+                    driver = new FirefoxDriver();
+                    drivers.put("Firefox", driver);
+                }
+                break;
+            case "Chrome":
+                driver = drivers.get("Chrome");
+                if (driver == null) {
+                    System.setProperty("webdriver.chrome.driver",
+                            "/home/anny/IdeaProjects/selenium_aairiian/src/test/resources/drivers/chromedriver");
+                    driver = new ChromeDriver();
+                    drivers.put("Chrome", driver);
+                }
+                break;
+        }
+        return driver;
+    }
 
-            switch (browserName) {
-                case "Firefox":
-                    driver = drivers.get("Firefox");
-                    if (driver == null) {
-                        driver = new FirefoxDriver();
-                        drivers.put("Firefox", driver);
-                    }
-                    break;
-//                case "IE":
-//                    driver = drivers.get("IE");
-//                    if (driver == null) {
-//                        System.setProperty("webdriver.ie.driver",
-//                                "C:\\Users\\abc\\Desktop\\Server\\IEDriverServer.exe");
-//                        driver = new InternetExplorerDriver();
-//                        drivers.put("IE", driver);
-//                    }
-//                    break;
-                case "Chrome":
-                    driver = drivers.get("Chrome");
-                    if (driver == null) {
-                        System.setProperty("webdriver.chrome.driver",
-                                "/usr/bin/chromedriver");
-                        driver = new ChromeDriver();
-                        drivers.put("Chrome", driver);
-                    }
-                    break;
-            }
-            return driver;
+    public static void closeAllDriver() {
+        for (String key : drivers.keySet()) {
+            drivers.get(key).close();
+            drivers.get(key).quit();
         }
     }
+}
+
+
+
 
 

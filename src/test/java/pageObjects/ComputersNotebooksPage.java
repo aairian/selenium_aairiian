@@ -12,7 +12,7 @@ import static org.testng.AssertJUnit.assertEquals;
  * Created by anny on 22.08.15.
  */
 public class ComputersNotebooksPage {
-    private WebDriver driver;
+    public WebDriver driver;
     private WebElement computersNotebooksTitle;
 
     public ComputersNotebooksPage(WebDriver driver) {

@@ -10,12 +10,10 @@ import java.util.Set;
  * Created by anny on 12.08.15.
  */
 public class HomePage {
-    private WebDriver driver;
     private WebElement user;
+    public WebDriver driver;
 
-    public HomePage(WebDriver driver) {
-        this.driver = driver;
-    }
+    public HomePage(WebDriver driver) {this.driver = driver;}
 
     public LoginPage openLoginPopWindow() {
         WebElement openPopUpWindowButton = driver.findElement(By.name("signin"));
@@ -49,7 +47,7 @@ public class HomePage {
     }
 
     public ComputersNotebooksPage openComputersNotebooks(){
-        driver.findElement(By.name("fat_menu_link")).click();
+        driver.findElement(By.xpath("//a[@name='fat_menu_link' and contains(text(), 'Ноутбуки, планшеты и компьютеры')]")).click();
         return new ComputersNotebooksPage(driver);
     }
 

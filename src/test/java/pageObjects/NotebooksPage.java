@@ -10,7 +10,7 @@ import java.util.List;
  * Created by anny on 23.08.15.
  */
 public class NotebooksPage {
-    private WebDriver driver;
+    protected WebDriver driver;
 
 
     public NotebooksPage(WebDriver driver) {

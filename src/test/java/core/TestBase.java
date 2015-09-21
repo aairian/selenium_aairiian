@@ -1,34 +1,39 @@
 package core;
 
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.firefox.FirefoxDriver;
-import org.openqa.selenium.support.ui.WebDriverWait;
-import org.testng.annotations.AfterSuite;
-import org.testng.annotations.AfterTest;
-import org.testng.annotations.BeforeSuite;
+import org.openqa.selenium.WebElement;
+import org.testng.annotations.BeforeTest;
 
 import java.util.concurrent.TimeUnit;
+
+import static org.testng.AssertJUnit.assertEquals;
 
 /**
  * Created by selenium on 29.07.2015.
  */
-    public class TestBase {
+    public class TestBase extends BrowserFactory {
 
-    protected WebDriver driver;
-    protected WebDriverWait webDriverWait;
+    public WebDriver driver;
+    protected WebElement user;
+    protected String login = "funic89@gmail.com";
+    protected String password = "*********";
+    protected String userName = "Эмилия Деклик";
+    protected String personalDataText = "Личные данные";
+    protected String computersNotebooksTitleText = "Компьютеры и ноутбуки";
+    protected String appleManufacture = "Apple";
+    protected String appleNotebooksPageTitleText = "Ноутбуки Apple";
+    protected String expensivefilter = "от дорогих к дешевым";
+    protected String appleMacBookProRetinaZ0QP000X6 = "Apple MacBook Pro Retina 13\" (Z0QP000X6)";
+    protected String appleMacBookProRetinaMGXA2UA = "Apple MacBook Pro Retina 15\" (MGXA2UA/A)";
+    protected String comparisonPageHeaderText = "Сравниваем ноутбуки";
 
-    @BeforeSuite
-    public void setUp() {
-        driver = new FirefoxDriver();
-        webDriverWait = new WebDriverWait(driver, 10);
-        driver.get("https://www.google.com");
+    @BeforeTest
+    public void setUp (){
+        WebDriver driver = BrowserFactory.getBrowser("Chrome");
+        driver.get("http://rozetka.com.ua/");
         driver.manage().window().maximize();
         driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
-    }
-    @AfterSuite
-    public void tearDown()
-    {
-        driver.quit();
+        assertEquals("http://rozetka.com.ua/", driver.getCurrentUrl());
     }
 
 }

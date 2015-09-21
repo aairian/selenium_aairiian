@@ -3,7 +3,7 @@
 <suite name="Suite1" verbose="1" >
     <test name="Nopackage" >
         <classes>
-            <class name="lesson_2.PrimeTest" />
+            <class name="ui_tests.lesson_7.lesson_2.lesson_5home.StylusTest" />
         </classes>
     </test>
 </suite>
