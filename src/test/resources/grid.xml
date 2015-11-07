@@ -11,7 +11,7 @@
 
             </parameters>
             <classes>
-                <class name="ui_tests.lesson_7.GridTest"/>
+                <class name="automationFramework.GridTest"/>
             </classes>
 
         </test>

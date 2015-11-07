@@ -11,9 +11,11 @@ import static org.testng.AssertJUnit.assertEquals;
 /**
  * Created by selenium on 29.07.2015.
  */
-    public class TestBase extends BrowserFactory {
+    public class TestBase extends BrowserFactory{
+
 
     public WebDriver driver;
+
     protected WebElement user;
     protected String login = "funic89@gmail.com";
     protected String password = "*********";
@@ -29,7 +31,7 @@ import static org.testng.AssertJUnit.assertEquals;
 
     @BeforeTest
     public void setUp (){
-        WebDriver driver = BrowserFactory.getBrowser("Chrome");
+        driver = BrowserFactory.getBrowser("Firefox");
         driver.get("http://rozetka.com.ua/");
         driver.manage().window().maximize();
         driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);

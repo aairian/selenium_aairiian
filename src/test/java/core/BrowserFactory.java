@@ -3,6 +3,7 @@ package core;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
+import org.testng.annotations.AfterTest;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -10,13 +11,13 @@ import java.util.Map;
 
 public class BrowserFactory {
 
-    private static Map<String, WebDriver> drivers = new HashMap<String, WebDriver>();
+    private  static Map<String, WebDriver> drivers = new HashMap<String, WebDriver>();
 
     /*
      * Factory method for getting browsers
      */
     public static WebDriver getBrowser(String browserName) {
-        WebDriver driver = null;
+       WebDriver driver = null;
 
         switch (browserName) {
             case "Firefox":
@@ -39,6 +40,7 @@ public class BrowserFactory {
         return driver;
     }
 
+    @AfterTest
     public static void closeAllDriver() {
         for (String key : drivers.keySet()) {
             drivers.get(key).close();
@@ -46,6 +48,8 @@ public class BrowserFactory {
         }
     }
 }
+
+
 
 
 

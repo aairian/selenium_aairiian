@@ -72,8 +72,8 @@ public class RozetkaTests extends TestBase{
 
 
     @AfterTest
-    public void tearDown()
-    { BrowserFactory.closeAllDriver();
+    public void tearDown() {
+        BrowserFactory.closeAllDriver();
     }
 
 

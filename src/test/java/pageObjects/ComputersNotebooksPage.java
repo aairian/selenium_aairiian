@@ -29,7 +29,7 @@ public class ComputersNotebooksPage {
         List<WebElement> listOfNotebooks = notebooks.findElements(By.tagName("li"));
         assertEquals(6, listOfNotebooks.size());
 
-        driver.findElement(By.xpath("//a[@name='group_category']/span[text()='Все ноутбуки']")).click();
+        driver.findElement(By.xpath("//span[@class='arrow-link-inner' and contains(text(), 'Все ноутбуки')]")).click();
         return new NotebooksPage(driver);
     }
 }
