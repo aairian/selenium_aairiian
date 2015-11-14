@@ -1,7 +1,6 @@
 package core;
 
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
 import org.testng.annotations.BeforeTest;
 
 import java.util.concurrent.TimeUnit;
@@ -16,7 +15,6 @@ import static org.testng.AssertJUnit.assertEquals;
 
     public WebDriver driver;
 
-    protected WebElement user;
     protected String login = "funic89@gmail.com";
     protected String password = "*********";
     protected String userName = "Эмилия Деклик";
@@ -31,7 +29,7 @@ import static org.testng.AssertJUnit.assertEquals;
 
     @BeforeTest
     public void setUp (){
-        driver = BrowserFactory.getBrowser("Firefox");
+        driver = BrowserFactory.getBrowser("Chrome");
         driver.get("http://rozetka.com.ua/");
         driver.manage().window().maximize();
         driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
