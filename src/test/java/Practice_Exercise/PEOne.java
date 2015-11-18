@@ -1,4 +1,4 @@
-package practice_exercise;
+package Practice_Exercise;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;

@@ -16,7 +16,7 @@ import static org.testng.AssertJUnit.assertEquals;
 public class RozetkaTests extends TestBase{
 
 
-    @Test (enabled = false)
+    @Test (enabled = true)
     public void seleniumCourseFinalTask() throws InterruptedException {
         HomePage home = new HomePage(driver);
         ComputersNotebooksPage onComputerNotebooksPage = home.openComputersNotebooks();
@@ -71,7 +71,7 @@ public class RozetkaTests extends TestBase{
     }
 
 
-    @AfterTest (enabled = false)
+    @AfterTest
     public void tearDown() {
         BrowserFactory.closeAllDriver();
     }
