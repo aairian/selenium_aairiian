@@ -1,8 +1,11 @@
 package automationFramework;
 
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
-import org.testng.annotations.*;
+import org.testng.annotations.Test;
+
+import java.util.concurrent.TimeUnit;
 
 /**
  * Created by anny on 22.11.15.
@@ -10,7 +13,7 @@ import org.testng.annotations.*;
 public class SeleniumPractice {
 
 
-    @Test (description = "WebDriver Browser commands", enabled = true)
+    @Test (description = "WebDriver Browser commands", enabled = false)
     public void browserCommands() {
         WebDriver driver = new FirefoxDriver();
         driver.get("http://Store.DemoQA.com");
@@ -25,4 +28,21 @@ public class SeleniumPractice {
         driver.quit();
 
     }
+
+    @Test (description = "WebDriver Browser Navigation commands", enabled = true)
+    public void navigationCommands() {
+        WebDriver driver = new FirefoxDriver();
+        driver.manage().window().maximize();
+        driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+        String homePage = "http://DemoQA.com";
+        driver.get(homePage);
+        driver.findElement(By.xpath("//*[@id='menu-item-374']/a")).click();
+        driver.navigate().back();
+        driver.navigate().forward();
+        driver.navigate().to(homePage);
+        driver.navigate().refresh();
+        driver.quit();
+
+    }
+
 }
