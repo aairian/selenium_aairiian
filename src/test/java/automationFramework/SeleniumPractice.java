@@ -2,6 +2,7 @@ package automationFramework;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.testng.annotations.Test;
 
@@ -24,12 +25,10 @@ public class SeleniumPractice {
         driver.getCurrentUrl().equals("http://Store.DemoQA.com");
         int pageSourceLength = driver.getPageSource().length();
         System.out.println("The page source length is " + pageSourceLength);
-
         driver.quit();
-
     }
 
-    @Test (description = "WebDriver Browser Navigation commands", enabled = true)
+    @Test (description = "WebDriver Browser Navigation commands", enabled = false)
     public void navigationCommands() {
         WebDriver driver = new FirefoxDriver();
         driver.manage().window().maximize();
@@ -41,6 +40,22 @@ public class SeleniumPractice {
         driver.navigate().forward();
         driver.navigate().to(homePage);
         driver.navigate().refresh();
+        driver.quit();
+
+    }
+
+    @Test (description = "WebElement commands", enabled = true)
+    public void webElementCommands() {
+        WebDriver driver = new FirefoxDriver();
+        driver.manage().window().maximize();
+        driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+        String homePage = "http://www.toolsqa.com/automation-practice-form/";
+        driver.get(homePage);
+        WebElement firstNameLoc = driver.findElement(By.name("firstname"));
+        firstNameLoc.sendKeys("Anna");
+        WebElement lastNameLoc = driver.findElement(By.name("lastname"));
+        lastNameLoc.sendKeys("Airiian");
+        driver.findElement(By.id("submit")).click();
         driver.quit();
 
     }
