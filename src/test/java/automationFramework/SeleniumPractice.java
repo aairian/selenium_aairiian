@@ -14,7 +14,7 @@ import java.util.concurrent.TimeUnit;
 public class SeleniumPractice {
 
 
-    @Test (description = "WebDriver Browser commands", enabled = false)
+    @Test(description = "WebDriver Browser commands", enabled = false)
     public void browserCommands() {
         WebDriver driver = new FirefoxDriver();
         driver.get("http://Store.DemoQA.com");
@@ -28,7 +28,7 @@ public class SeleniumPractice {
         driver.quit();
     }
 
-    @Test (description = "WebDriver Browser Navigation commands", enabled = false)
+    @Test(description = "WebDriver Browser Navigation commands", enabled = false)
     public void navigationCommands() {
         WebDriver driver = new FirefoxDriver();
         driver.manage().window().maximize();
@@ -44,7 +44,7 @@ public class SeleniumPractice {
 
     }
 
-    @Test (description = "WebElement commands", enabled = true)
+    @Test(description = "WebElement commands", enabled = false)
     public void webElementCommands() {
         WebDriver driver = new FirefoxDriver();
         driver.manage().window().maximize();
@@ -60,4 +60,18 @@ public class SeleniumPractice {
 
     }
 
+    @Test(description = "FindElement Commands Method", enabled = true)
+    public void findElementCommands() {
+        WebDriver driver = new FirefoxDriver();
+        driver.manage().window().maximize();
+        driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+        String homePage = "http://www.toolsqa.com/automation-practice-form/";
+        driver.get(homePage);
+        WebElement patialLinkTestLoc = driver.findElement(By.partialLinkText("Partial"));
+        patialLinkTestLoc.click();
+        WebElement button = driver.findElement(By.tagName("button"));
+        String attName = button.getAttribute("name");
+        System.out.println("The attribute of name parameter is " + attName);
+        driver.quit();
+    }
 }
