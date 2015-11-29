@@ -72,6 +72,8 @@ public class SeleniumPractice {
         WebElement button = driver.findElement(By.tagName("button"));
         String attName = button.getAttribute("name");
         System.out.println("The attribute of name parameter is " + attName);
+        WebElement linkTestLoc = driver.findElement(By.xpath("//*[text() = 'Link Test']"));
+        linkTestLoc.click();
         driver.quit();
     }
 }
