@@ -6,12 +6,11 @@ import org.testng.annotations.BeforeTest;
 
 import java.util.concurrent.TimeUnit;
 
-import static org.testng.AssertJUnit.assertEquals;
-
 /**
  * Created by selenium on 29.07.2015.
  */
     public class TestBase extends BrowserFactory{
+
 
 
     public WebDriver driver;
@@ -28,14 +27,17 @@ import static org.testng.AssertJUnit.assertEquals;
     protected String appleMacBookProRetinaZ0QP000X6 = "Apple MacBook Pro Retina 13\" (Z0QP000X6)";
     protected String appleMacBookProRetinaMGXA2UA = "Apple MacBook Pro Retina 15\" (MGXA2UA/A)";
     protected String comparisonPageHeaderText = "Сравниваем ноутбуки";
+    protected String URLStoreQA = "http://store.demoqa.com/";
+    protected String URLDemoQA = "http://demoqa.com/";
+    protected String URLToolsQA = "http://www.toolsqa.com/automation-practice-form/";
 
     @BeforeTest
     public void setUp (){
         driver = BrowserFactory.getBrowser("Firefox");
-        driver.get("http://rozetka.com.ua/");
+//        driver.get(URLStoreQA);
         driver.manage().window().maximize();
         driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
-        assertEquals("http://rozetka.com.ua/", driver.getCurrentUrl());
+//        assertEquals(URLStoreQA, driver.getCurrentUrl());
     }
 
 }
