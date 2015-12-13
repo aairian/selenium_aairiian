@@ -2,21 +2,17 @@ package automationFramework;
 
 import core.TestBase;
 import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.firefox.FirefoxDriver;
 import org.testng.annotations.Test;
 
-import java.util.concurrent.TimeUnit;
-
-import static junit.framework.Assert.assertEquals;
+import static org.testng.AssertJUnit.assertEquals;
 
 /**
  * Created by anny on 22.11.15.
  */
 public class SeleniumPractice extends TestBase{
 
-    @Test(description = "WebDriver Browser commands", enabled = true)
+    @Test(description = "WebDriver Browser commands", enabled = true, priority = 2)
     public void browserCommands() {
         driver.get(URLStoreQA);
         assertEquals(URLStoreQA, driver.getCurrentUrl());
@@ -28,7 +24,7 @@ public class SeleniumPractice extends TestBase{
         System.out.println("The page source length is " + pageSourceLength);
     }
 
-    @Test(description = "WebDriver Browser Navigation commands", enabled = true)
+    @Test(description = "WebDriver Browser Navigation commands", enabled = true, priority = 1)
     public void navigationCommands() {
         driver.get(URLDemoQA);
         assertEquals(URLDemoQA, driver.getCurrentUrl());
@@ -39,25 +35,21 @@ public class SeleniumPractice extends TestBase{
         driver.navigate().refresh();
     }
 
-    @Test(description = "WebElement commands", enabled = false)
+    @Test(description = "WebElement commands", enabled = true, priority = 4)
     public void webElementCommands() {
         driver.get(URLToolsQA);
+        assertEquals(URLToolsQA, driver.getCurrentUrl());
         WebElement firstNameLoc = driver.findElement(By.name("firstname"));
         firstNameLoc.sendKeys("Anna");
         WebElement lastNameLoc = driver.findElement(By.name("lastname"));
         lastNameLoc.sendKeys("Airiian");
         driver.findElement(By.id("submit")).click();
-        driver.quit();
-
     }
 
-    @Test(description = "FindElement Commands Method", enabled = false)
+    @Test(description = "FindElement Commands Method", enabled = true, priority = 3)
     public void findElementCommands() {
-        WebDriver driver = new FirefoxDriver();
-        driver.manage().window().maximize();
-        driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
-        String homePage = "http://www.toolsqa.com/automation-practice-form/";
-        driver.get(homePage);
+        driver.get(URLToolsQA);
+        assertEquals(URLToolsQA, driver.getCurrentUrl());
         WebElement patialLinkTestLoc = driver.findElement(By.partialLinkText("Partial"));
         patialLinkTestLoc.click();
         WebElement button = driver.findElement(By.tagName("button"));
@@ -65,6 +57,5 @@ public class SeleniumPractice extends TestBase{
         System.out.println("The attribute of name parameter is " + attName);
         WebElement linkTestLoc = driver.findElement(By.xpath("//*[text() = 'Link Test']"));
         linkTestLoc.click();
-        driver.quit();
     }
 }

@@ -29,15 +29,13 @@ import java.util.concurrent.TimeUnit;
     protected String comparisonPageHeaderText = "Сравниваем ноутбуки";
     protected String URLStoreQA = "http://store.demoqa.com/";
     protected String URLDemoQA = "http://demoqa.com/";
-    protected String URLToolsQA = "http://www.toolsqa.com/automation-practice-form/";
+    protected String URLToolsQA = "http://toolsqa.com/automation-practice-form/";
 
     @BeforeTest
     public void setUp (){
         driver = BrowserFactory.getBrowser("Firefox");
-//        driver.get(URLStoreQA);
         driver.manage().window().maximize();
         driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
-//        assertEquals(URLStoreQA, driver.getCurrentUrl());
     }
 
 }
