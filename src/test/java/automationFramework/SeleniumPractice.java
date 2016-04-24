@@ -58,4 +58,12 @@ public class SeleniumPractice extends TestBase{
         WebElement linkTestLoc = driver.findElement(By.xpath("//*[text() = 'Link Test']"));
         linkTestLoc.click();
     }
+    @Test
+    public void arrayTask(){
+
+        String [] array = {"a", "b", "c"};
+        int aLength = array.length;
+        System.out.print(aLength);
+    }
+
 }
