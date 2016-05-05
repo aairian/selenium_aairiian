@@ -1,4 +1,4 @@
-package automationFramework;
+package seleniumPractice;
 
 import java.util.Arrays;
 

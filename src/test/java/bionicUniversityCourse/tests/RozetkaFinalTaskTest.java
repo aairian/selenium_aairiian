@@ -1,11 +1,10 @@
-package automationFramework;
+package bionicUniversityCourse.tests;
 
-import core.BrowserFactory;
-import core.TestBase;
-import org.openqa.selenium.WebDriver;
+import bionicUniversityCourse.core.BrowserFactory;
+import bionicUniversityCourse.core.TestBase;
+import bionicUniversityCourse.pageObjects.*;
 import org.testng.annotations.AfterTest;
 import org.testng.annotations.Test;
-import pageObjects.*;
 
 import static org.testng.Assert.assertTrue;
 import static org.testng.AssertJUnit.assertEquals;
@@ -13,10 +12,10 @@ import static org.testng.AssertJUnit.assertEquals;
 /**
  * Created by anny on 09.08.15.
  */
-public class RozetkaTests extends TestBase{
+public class RozetkaFinalTaskTest extends TestBase{
 
 
-    @Test (enabled = false)
+    @Test (enabled = true)
     public void seleniumCourseFinalTask() throws InterruptedException {
         HomePage home = new HomePage(driver);
         ComputersNotebooksPage onComputerNotebooksPage = home.openComputersNotebooks();
@@ -44,31 +43,6 @@ public class RozetkaTests extends TestBase{
 
     }
 
-    @Test (enabled = false)
-    public void loginWithVKAccountTest () throws Exception {
-        HomePage home = new HomePage(driver);
-        LoginPage loginPage = home.openLoginPopWindow();
-        VKLoginPage vkLoginPage = loginPage.openVKLoginWindow();
-        HomePage user = vkLoginPage.entranceWithValidCredentials(login, password);
-        assertTrue(user.findUserName().getText().contains(userName));
-        PersonalDataPage myPersonalData = user.openPersonalData();
-        assertTrue(myPersonalData.findTitle().getText().contains(personalDataText));
-
-    }
-
-    @Test (enabled = false)
-    public void sampleTest002()
-    {
-        WebDriver driver = BrowserFactory.getBrowser("Chrome");
-
-
-        //Test that both the browsers are actually only one instance of chrome driver
-        WebDriver driver1 = BrowserFactory.getBrowser("Chrome");
-        if(driver.equals(driver1))
-        {
-            System.out.println("The two chrome drivers are same");
-        }
-    }
 
 
     @AfterTest

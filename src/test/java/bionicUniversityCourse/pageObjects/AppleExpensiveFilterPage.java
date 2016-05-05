@@ -1,4 +1,4 @@
-package pageObjects;
+package bionicUniversityCourse.pageObjects;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;

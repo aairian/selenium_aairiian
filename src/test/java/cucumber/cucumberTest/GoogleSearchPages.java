@@ -1,6 +1,6 @@
-//package pageObjects;
+//package bionicUniversityCourse.pageObjects;
 //
-//import core.TestBase;
+//import bionicUniversityCourse.core.TestBase;
 //import org.openqa.selenium.By;
 //import org.openqa.selenium.WebDriver;
 //import org.openqa.selenium.WebElement;

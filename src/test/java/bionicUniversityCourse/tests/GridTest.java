@@ -1,4 +1,4 @@
-package automationFramework;
+package bionicUniversityCourse.tests;
 
 
 import org.openqa.selenium.*;

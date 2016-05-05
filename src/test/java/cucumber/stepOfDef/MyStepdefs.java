@@ -1,4 +1,4 @@
-package stepOfDef;
+package cucumber.stepOfDef;
 
 import cucumber.annotation.en.Given;
 import cucumber.annotation.en.When;
